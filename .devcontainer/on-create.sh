@@ -52,14 +52,19 @@ echo "creating k3d cluster"
 kic cluster rebuild
 
 echo "bilding IMDb"
-kic build imdb
+# kic build imdb
 
 echo "building WebValidate"
-sed -i "s/RUN dotnet test//g" /workspaces/webvalidate/Dockerfile
-kic build webv
+# sed -i "s/RUN dotnet test//g" /workspaces/webvalidate/Dockerfile
+# kic build webv
 
 echo "deploying k3d cluster"
-kic cluster deploy
+# kic cluster deploy
+
+echo "prepare seatunnel"
+cd /workspaces/seatunnel-demo/seatunnel/flink
+docker build -t seatunnel:2.3.0-flink-1.13 -f Dockerfile .
+k3d image import seatunnel:2.3.0-flink-1.13
 
 # only run apt upgrade on pre-build
 if [ "$CODESPACE_NAME" = "null" ]
