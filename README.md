@@ -1,5 +1,5 @@
 # Seatunnel in Codespaces
-起動したら下記コマンドを実行してdemoを動かせる
+Code Space起動したら下記コマンドを実行してdemoを動かせる
 
 ```
 kubectl apply -f seatunnel/seatunnel-flink.yaml
